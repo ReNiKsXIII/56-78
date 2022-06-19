@@ -1,12 +1,12 @@
+	require_once 'Tag.php';
 	require_once 'Form.php';
 	require_once 'Input.php';
-
-	echo nl2br("\n\nПример без ореn\n\n");
+	require_once 'Submit.php';
 
 	$form = (new Form)->setAttrs(['action' => '', 'method' => 'GET']);
+	$form = (new Form)->setAttrs(['action' => 'test.php', 'method' => 'GET']);
 
 	echo $form->open();
-	echo (new Input)->setAttr('name', 'year');
 	echo (new Input)->setAttr('name', 'n1');
 	echo (new Input)->setAttr('name', 'n2');
 	echo (new Input)->setAttr('name', 'n3');
@@ -14,6 +14,8 @@
 	echo (new Input)->setAttr('name', 'n5');
 
 	echo (new Input)->setAttr('type', 'submit');
+	echo (new Input)->setAttr('name', 'year');
+	echo new Submit;
 	echo $form->close();
 
 	if(isset($_GET['n1']) || isset($_GET['n2'])|| isset($_GET['n3'])|| isset($_GET['n4'])|| isset($_GET['n5'])){
