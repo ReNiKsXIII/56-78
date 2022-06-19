@@ -1,69 +1,33 @@
-class Tag
-	{
-		private $name;
+private $name;
 		private $attrs;
 
-		public function __construct($name)
 		public function __construct($name, $attrs = [])
+		public function __construct($name)
 		{
 			$this->name = $name;
 			$this->attrs = $attrs;
 		}
 
-		public function Open($params = null)
 		public function Open()
-		{
-			if($this->name == "img")
-			{
-				return "<$this->name src='$params'";	
-			}
-
-			if($params == "header")
-			{
-				return "<header><$this->name>";
-			}
-
-			if(empty($params))
-			{
-				return "<$this->name>";	
-			}
-			$attrsStr = $this->getAttrsStr($this->attrs); 
-			return "<$this->name$attrsStr>";
-		}
-		public function Close($params = null)
-
-		public function Close()
-		{
-			if($this->name == "img")
-			{
-				return ">";	
-			}
-
-			if($params == "header")
-			{
-				return "</$this->name></header>";
-			}
-
-			if(empty($params))
-			{
-				return "</$this->name>";	
+@@ -21,6 +20,21 @@ public function Close()
 			return "</$this->name>";
+		}
+
+		public function setAttr($name, $value)
+		{
+			$this->attrs[$name] = $value;
+			return $this; 
+		}
+
+		public function removeAttr($name)
+		{
+			if(array_key_exists($name, $this->attrs))
+			{
+				unset($this->attrs[$name]);
+			}
+			return $this;
 		}
 
 		private function getAttrsStr($attrs)
 		{
 			if (!empty($attrs)) {
-				$result = '';
-
-				foreach ($attrs as $name => $value) {
-					$result .= " $name=\"$value\"";
-				}
-
-				return $result;
-			} else {
-				return '';
-			}
-		}		
-		}
-	}
-?>

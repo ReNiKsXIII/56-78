@@ -1,14 +1,16 @@
 <?php
 	require_once 'Tag.php';
 
-	$tag0 = new Tag('div');
-	$tag1 = new Tag('h2');
-	$tag2 = new Tag('img');
+	$tag = new Tag('div');
+	$tag->setAttr('id', 'test'); // откроем тег
+	$tag->removeAttr('id'); // удалим тег
+	echo $tag->Open();
+	echo 'sadas';
+	echo $tag->Close(); // закроем тег
 
-	echo $tag0->Open().'text'.$tag0->Close(); // выведет <div>text</div>
-	echo $tag1->Open("header").'text'.$tag1->Close("header"); // выведет <header><h2>text</h2></header>
-	echo $tag2->Open("cat-005.png").$tag2->Close(); // выведет <img src="cat-005.png">
 	$tag = new Tag('input', ['id' => 'test', 'class' => 'eee bbb']);
 	echo $tag->Open(); // выведет <input id="test" class="eee bbb">
+	// выводит <div>sadas</div>
+		
 
 ?> 
