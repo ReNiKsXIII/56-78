@@ -1,20 +1,24 @@
 <?php
 	require_once 'iTag.php';
 	require_once 'Tag.php';
-
-	$tag = new Tag('input');
-
-	$tag->setAttr('class', 'eee zzz kkk'); // добавим 3 класса
-	$tag->removeClass('zzz'); // удалим класс 'zzz'
-	$tag->addClass('test');
-	echo nl2br($tag->open()."\n\n getName: "); // выведет <input class="eee kkk">
-	echo nl2br($tag->getName()."\n getAttrs: ");
-	echo nl2br($tag->getAttrs()."\n getAttr: ");
-	echo nl2br($tag->getAttr('class')."\n getText: ");
-	echo nl2br($tag->getText());
-
-
 	require_once 'Image.php';
 	$img = (new Image())->setAttrs(['src' => 'cat-005.png', 'width' =>'300', 'height'=>'200']);
 	echo $img->open();
+	require_once 'Link.php';
+	require_once 'menu.php';
+
+	print(nl2br($link1."\n"));	
+	print(nl2br($link2."\n"));	
+	print(nl2br($link3."\n"));	
+	print(nl2br($link4."\n"));	
+	print(nl2br($link5."\n"));	
+	print(nl2br($link6."(show)\n"));	
+
+	echo (new Link)
+		->setAttr('href', 'menu/5.php')
+		->setAttr('class', 'link1 link2') // добавляем ссылке классы
+		->setText('index')
+		->show();
+
+
 ?> 
